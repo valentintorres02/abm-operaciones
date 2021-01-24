@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Home from './Home';
 import Abm from './Abm';
 import Nabvar from './Nabvar';
+import Update from './Update';
 
 function App() {
   const [operationsList, setOperationsList] = useState([]);
@@ -30,6 +31,13 @@ function App() {
         path="/abm"
         render={() => (
           <Abm operationsList={operationsList} setOperationsList={setOperationsList} />
+        )}
+      />
+      <Route
+        exact
+        path="/update"
+        render={() => (
+          <Update />
         )}
       />
     </div>
