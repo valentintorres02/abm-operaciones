@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import List from './List';
+import HomeList from './HomeList';
 
 function Home({ operationsList }) {
   const [totalIncome, setTotalIncome] = useState(0);
@@ -45,12 +45,12 @@ function Home({ operationsList }) {
             {operationsList.slice(operationsList.length - 10,
               operationsList.length).reverse()
               .map((val) => (
-                <List
+                <HomeList
                   id={val.id}
                   concept={val.concept}
                   amount={val.amount}
                   date={val.date}
-                  type={val.type}
+                  type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
                 />
               ))}
           </tbody>
