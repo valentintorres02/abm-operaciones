@@ -51,11 +51,13 @@ app.delete('/api/delete/:operationId', (req, res) => {
 })
 
 app.put('/api/update', (req, res) => {
-    const name = req.body.operationConcept
-    const abb = req.body.operationAmount
-    const sqlUpdate = 'UPDATE operations SET amount = ? WHERE concept = ?'
+    const id = req.body.operationId
+    const concept = req.body.operationConcept
+    const amount = req.body.operationAmount
+    const date = req.body.operationDate
+    const sqlUpdate = 'UPDATE operations SET concept = ?, amount = ?, date = ? WHERE id = ?'
 
-    db.query(sqlUpdate, [abb, name], (err, result) => {
+    db.query(sqlUpdate, [concept, amount, date, id], (err, result) => {
         console.log(err)
     })
 })
