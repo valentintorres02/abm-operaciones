@@ -2,15 +2,18 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './App.css';
 import Axios from 'axios';
+import dateFormat from 'dateformat';
 import List from './List';
+import UpdateList from './UpdateList';
 
 function Abm({ operationsList, setOperationsList }) {
   const [operationConcept, setOperationConcept] = useState('');
   const [operationAmount, setOperationAmount] = useState('');
   const [operationDate, setOperationDate] = useState('');
   const [operationType, setOperationType] = useState('in');
-  const [newAmount, setNewAmount] = useState('');
   const [updateClass, setUpdateClass] = useState('hidden');
+  // const [newAmount, setNewAmount] = useState('');
+  const [operationToUpdate, setOperationToUpdate] = useState({});
 
   const submitOperation = () => {
     Axios.post('http://localhost:3001/api/insert', {
@@ -25,13 +28,17 @@ function Abm({ operationsList, setOperationsList }) {
     Axios.delete(`http://localhost:3001/api/delete/${operation}`);
   };
 
-  const updateOperation = (operation) => {
-    Axios.put('http://localhost:3001/api/update', {
-      operationConcept: operation,
-      operationAmount: newAmount,
-    });
-    setNewAmount('');
-  };
+  // const updateOperation = (operation) => {
+  //   Axios.put('http://localhost:3001/api/update', {
+  //     operationConcept: operation,
+  //     operationAmount: newAmount,
+  //   });
+  //   setNewAmount('');
+  // };
+
+  // const updateOperation = (operation) => {
+  //   console.log(operation);
+  // };
 
   return (
     <div className="App">
@@ -64,7 +71,7 @@ function Abm({ operationsList, setOperationsList }) {
             type="date"
             name="operationDate"
             onChange={(e) => {
-              setOperationDate(e.target.value);
+              setOperationDate(dateFormat(e.target.value, 'dd-mm-yyyy'));
             }}
           />
         </label>
@@ -83,31 +90,9 @@ function Abm({ operationsList, setOperationsList }) {
 
         <button type="button" onClick={submitOperation}>Submit</button>
 
-        {operationsList.map((val) => (
-          <div className="card" key={val.id}>
-            <h1>{val.concept}</h1>
-            <p>{val.amount}</p>
-            <button type="button" onClick={() => deleteOperation(val.id)}>Delete</button>
-            <input
-              type="text"
-              id="modify"
-              onChange={(e) => {
-                setNewAmount(e.target.value);
-              }}
-            />
-            <button
-              type="button"
-              onClick={() => {
-                updateOperation(val.concept);
-              }}
-            >
-              Modify
-            </button>
-          </div>
-        ))}
       </div>
 
-      <hr />
+      <br />
 
       <div>
         <table className="table table-bordered mb-5">
@@ -123,24 +108,43 @@ function Abm({ operationsList, setOperationsList }) {
           </thead>
           <tbody>
             {operationsList.map((val) => (
-              <List
-                id={val.id}
-                concept={val.concept}
-                amount={val.amount}
-                date={val.date}
-                type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
-                updateClass={updateClass}
-                deleteOperation={() => {
-                  deleteOperation(val.id);
-                }}
-                updateOperation={() => {
-                  setUpdateClass('');
-                }}
-              />
+              <>
+                <List
+                  key={val.id}
+                  id={val.id}
+                  concept={val.concept}
+                  amount={val.amount}
+                  date={val.date}
+                  type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
+                  updateClass=""
+                  deleteOperation={() => {
+                    deleteOperation(val.id);
+                  }}
+                  updateOperation={() => {
+                    console.log('ASD');
+                  }}
+                  editButtonHandler={(e) => {
+                    setOperationToUpdate(val);
+                    setUpdateClass('');
+                    console.log(e);
+                    console.log(operationToUpdate);
+                  }}
+                />
+                <UpdateList
+                  key={`${val.id}u`}
+                  id={val.id}
+                  concept={val.concept}
+                  amount={val.amount}
+                  date={val.date}
+                  type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
+                  updateClass="hidden"
+                />
+              </>
             ))}
           </tbody>
         </table>
       </div>
+      {console.log(updateClass)}
     </div>
   );
 }
