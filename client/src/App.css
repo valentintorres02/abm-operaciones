@@ -28,3 +28,13 @@ input:hover:disabled {
 .create-operation-title {
   margin-top: 20px;
 } 
+
+.input-table {
+  border: none;
+  text-align:center
+}
+
+input:disabled {
+  background:white;
+  color: black;
+}
