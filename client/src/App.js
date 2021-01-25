@@ -4,16 +4,19 @@ import { Route } from 'react-router-dom';
 import Home from './Home';
 import Abm from './Abm';
 import Nabvar from './Nabvar';
-import Update from './Update';
 
 function App() {
   const [operationsList, setOperationsList] = useState([]);
 
-  useEffect(() => {
+  const fetchData = () => {
     Axios.get('http://localhost:3001/api/get')
       .then((response) => {
         setOperationsList(response.data);
       });
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
 
   return (
@@ -30,14 +33,11 @@ function App() {
         exact
         path="/abm"
         render={() => (
-          <Abm operationsList={operationsList} setOperationsList={setOperationsList} />
-        )}
-      />
-      <Route
-        exact
-        path="/update"
-        render={() => (
-          <Update />
+          <Abm
+            fetchData={fetchData}
+            operationsList={operationsList}
+            setOperationsList={setOperationsList}
+          />
         )}
       />
     </div>
