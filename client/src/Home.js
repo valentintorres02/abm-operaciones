@@ -22,14 +22,17 @@ function Home({ operationsList }) {
 
   return (
     <div className="App">
-      <h3>Balance:</h3>
-      <p style={{
+
+      <hr />
+      <p>Balance:</p>
+      <h5 style={{
         ...currentBalance > 0 ? { color: 'green' } : { color: 'red' },
       }}
       >
         {currentBalance}
-      </p>
-      <h3>Últimas 10 operaciones:</h3>
+      </h5>
+      <hr />
+      <p>Últimas 10 operaciones:</p>
       <div>
         <table className="table table-bordered mb-5">
           <thead>
@@ -42,8 +45,7 @@ function Home({ operationsList }) {
             </tr>
           </thead>
           <tbody>
-            {operationsList.slice(operationsList.length - 10,
-              operationsList.length).reverse()
+            {operationsList.slice(Math.max(operationsList.length - 10, 0)).reverse()
               .map((val) => (
                 <HomeList
                   id={val.id}
