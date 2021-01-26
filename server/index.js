@@ -3,13 +3,9 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const app = express();
 const mysql = require('mysql')
+const config = require('./config')
 
-const db = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "Password123",
-    database: "abm_operations"
-})
+const db = mysql.createPool(config)
 
 
 const port = 3001
