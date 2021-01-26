@@ -38,3 +38,7 @@ input:disabled {
   background:white;
   color: black;
 }
+
+.center {
+  text-align: center; 
+}
