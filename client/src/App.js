@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import { Route } from 'react-router-dom';
-import Home from './Home';
-import Abm from './Abm';
-import Nabvar from './Nabvar';
+import Home from './components/Home';
+import Abm from './components/Abm';
+import Nabvar from './components/Nabvar';
 
 function App() {
   const [operationsList, setOperationsList] = useState([]);
