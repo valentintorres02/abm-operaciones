@@ -40,6 +40,7 @@ function CreateOperationForm({
           Fecha:
           <input
             type="date"
+            style={{ marginRight: '50px' }}
             className="form-control"
             name="operationDate"
             onChange={(e) => {
@@ -66,7 +67,7 @@ function CreateOperationForm({
 
       </div>
       <div>
-        <button type="button" className="btn btn-warning" style={{ margin: '10px' }} onClick={submitOperation}>Crear</button>
+        <button type="button" style={{ marginTop: '23px' }} className="btn btn-warning" onClick={submitOperation}>Crear</button>
 
       </div>
     </div>
