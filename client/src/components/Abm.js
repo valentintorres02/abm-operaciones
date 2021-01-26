@@ -16,7 +16,7 @@ function Abm({ operationsList, setOperationsList }) {
   const [newDate, setNewDate] = useState('');
 
   const validarFormulario = () => {
-    if (operationConcept || operationAmount || operationDate) {
+    if (operationConcept.length && operationAmount.length && operationDate.length > 0) {
       return true;
     }
     return false;
@@ -53,8 +53,8 @@ function Abm({ operationsList, setOperationsList }) {
   };
 
   return (
-    <div>
-      <p className="create-operation-title">Crear nueva operación:</p>
+    <div className="center">
+      <p>Crear nueva operación:</p>
 
       <CreateOperationForm
         setOperationConcept={setOperationConcept}
