@@ -15,14 +15,28 @@ function Abm({ operationsList, setOperationsList }) {
   const [newAmount, setNewAmount] = useState(0);
   const [newDate, setNewDate] = useState('');
 
+  const validarFormulario = () => {
+    if (operationConcept || operationAmount || operationDate) {
+      return true;
+    }
+    return false;
+  };
+
   const submitOperation = () => {
-    Axios.post('http://localhost:3001/api/insert', {
-      operationConcept, operationAmount, operationDate, operationType,
-    });
-    setOperationsList([...operationsList, {
-      operationConcept, operationAmount, operationDate, operationType,
-    }]);
-    console.log(operationsList);
+    if (validarFormulario()) {
+      Axios.post('http://localhost:3001/api/insert', {
+        operationConcept, operationAmount, operationDate, operationType,
+      });
+      setOperationsList([...operationsList, {
+        id: operationsList[operationsList.length - 1].id + 1,
+        concept: operationConcept,
+        amount: operationAmount,
+        date: operationDate,
+        type: operationType,
+      }]);
+    } else {
+      alert('Completa todos los campos!');
+    }
   };
 
   const deleteOperation = (operation) => {
@@ -36,7 +50,6 @@ function Abm({ operationsList, setOperationsList }) {
       operationAmount: newAmount,
       operationDate: newDate,
     });
-    setNewAmount('');
   };
 
   return (
@@ -72,16 +85,20 @@ function Abm({ operationsList, setOperationsList }) {
               date={val.date}
               type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
               handleEditButton={(e) => {
-                e.target.parentElement.parentElement.childNodes[1].childNodes[0].readOnly = false;
-                e.target.parentElement.parentElement.childNodes[1].childNodes[0].className = '';
-                e.target.parentElement.parentElement.childNodes[2].childNodes[0].readOnly = false;
-                e.target.parentElement.parentElement.childNodes[2].childNodes[0].className = '';
-                e.target.parentElement.parentElement.childNodes[3].childNodes[0].readOnly = false;
-                e.target.parentElement.parentElement.childNodes[3].childNodes[0].className = '';
+                const operationClicked = e.target.parentElement.parentElement.childNodes;
 
-                (e.target.parentElement.childNodes[1].className = 'hidden');
-                (e.target.parentElement.childNodes[2].className = 'hidden');
-                (e.target.parentElement.childNodes[0].className = 'btn btn-success');
+                operationClicked[1].childNodes[0].readOnly = false;
+                operationClicked[1].childNodes[0].className = '';
+                operationClicked[2].childNodes[0].readOnly = false;
+                operationClicked[2].childNodes[0].className = '';
+                operationClicked[3].childNodes[0].readOnly = false;
+                operationClicked[3].childNodes[0].className = '';
+
+                const editOperationButtons = e.target.parentElement.childNodes;
+
+                editOperationButtons[1].className = 'hidden';
+                editOperationButtons[2].className = 'hidden';
+                editOperationButtons[0].className = 'btn btn-success';
                 setNewConcept(
                   e.target.parentElement.parentElement.childNodes[1].childNodes[0].value,
                 );
@@ -92,10 +109,10 @@ function Abm({ operationsList, setOperationsList }) {
                   e.target.parentElement.parentElement.childNodes[3].childNodes[0].value,
                 );
               }}
-              handleDeleteButton={(e) => {
+              handleDeleteButton={() => {
                 if (window.confirm(`Deseas eliminar la operación ${val.concept}?`)) {
                   deleteOperation(val.id);
-                  e.target.parentElement.parentElement.innerHTML = '';
+                  setOperationsList(operationsList.filter((activity) => (activity.id !== val.id)));
                 }
               }}
               setNewConcept={(e) => setNewConcept(e.target.value)}
@@ -125,6 +142,7 @@ function Abm({ operationsList, setOperationsList }) {
               handleNewDateInput={setNewDate}
             />
           ))}
+
         </tbody>
       </table>
       <br />
