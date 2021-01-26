@@ -27,7 +27,7 @@ function CreateOperationForm({
             type="number"
             name="operationAmount"
             onChange={(e) => {
-              setOperationAmount(Number(e.target.value));
+              setOperationAmount((e.target.value));
             }}
           />
         </label>
