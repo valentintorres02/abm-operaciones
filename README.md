@@ -1,6 +1,6 @@
 # To install this project in your device: 
 
-1)  Run `npm install`
+1)  Run `npm install` in both `client` and `server` folders
 2) Create an SQL database with only one table `operations` which contains 4 columns with the following attributes:
     id: int AI PK
     concept: varchar(200)
