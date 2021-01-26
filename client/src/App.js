@@ -12,6 +12,7 @@ function App() {
     Axios.get('http://localhost:3001/api/get')
       .then((response) => {
         setOperationsList(response.data);
+        return response.data;
       });
   };
 
@@ -34,7 +35,6 @@ function App() {
         path="/abm"
         render={() => (
           <Abm
-            fetchData={fetchData}
             operationsList={operationsList}
             setOperationsList={setOperationsList}
           />
