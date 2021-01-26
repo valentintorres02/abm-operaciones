@@ -26,7 +26,7 @@ function Home({ operationsList }) {
       <hr />
       <p>Balance:</p>
       <h5 style={{
-        ...currentBalance > 0 ? { color: 'green' } : { color: 'red' },
+        ...currentBalance >= 0 ? { color: 'green' } : { color: 'red' },
       }}
       >
         {currentBalance}

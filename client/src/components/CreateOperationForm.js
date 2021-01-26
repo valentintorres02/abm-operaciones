@@ -6,12 +6,13 @@ function CreateOperationForm({
   setOperationConcept, setOperationAmount, setOperationDate, setOperationType, submitOperation,
 }) {
   return (
-    <>
+    <div className="input-group justify-content-center">
       <div>
         <label htmlFor="operationConcept">
           Concepto:
           <input
             type="text"
+            className="form-control"
             name="operationConcept"
             onChange={(e) => {
               setOperationConcept(e.target.value);
@@ -25,6 +26,7 @@ function CreateOperationForm({
           Monto:
           <input
             type="number"
+            className="form-control"
             name="operationAmount"
             onChange={(e) => {
               setOperationAmount((e.target.value));
@@ -38,6 +40,7 @@ function CreateOperationForm({
           Fecha:
           <input
             type="date"
+            className="form-control"
             name="operationDate"
             onChange={(e) => {
               setOperationDate(dateFormat(e.target.value, 'dd-mm-yyyy'));
@@ -51,6 +54,7 @@ function CreateOperationForm({
           Tipo:
           <select
             name="operationType"
+            className="form-control"
             onChange={(e) => {
               setOperationType(e.target.value);
             }}
@@ -65,7 +69,7 @@ function CreateOperationForm({
         <button type="button" className="btn btn-warning" style={{ margin: '10px' }} onClick={submitOperation}>Crear</button>
 
       </div>
-    </>
+    </div>
   );
 }
 
