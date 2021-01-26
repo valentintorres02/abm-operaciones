@@ -7,8 +7,8 @@
     amount: varchar(50)
     date: varchar(100)
     type: varchar(45)
-
 Or run the .sql file located in `databases` folder.
+
 3) Open `./server/index.js` and configure `db` constant with your database's cfg.
 4) Run `npm run start` in an `./abm-operaciones/client` terminal and `npm run devStart` in another `./abm-operaciones/server` terminal. 
 
