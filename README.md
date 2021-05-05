@@ -1,3 +1,5 @@
+# crud-operations
+
 # To install this project in your device: 
 
 1)  Run `npm install` in both `client` and `server` folders
