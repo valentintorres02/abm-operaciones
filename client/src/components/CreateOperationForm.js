@@ -1,6 +1,5 @@
 import React from 'react';
 import dateFormat from 'dateformat';
-import PropTypes from 'prop-types';
 
 function CreateOperationForm({
   setOperationConcept, setOperationAmount, setOperationDate, setOperationType, submitOperation,
@@ -73,21 +72,5 @@ function CreateOperationForm({
     </div>
   );
 }
-
-CreateOperationForm.defaultProps = {
-  setOperationConcept: () => {},
-  setOperationAmount: () => {},
-  setOperationDate: () => {},
-  setOperationType: () => {},
-  submitOperation: () => {},
-};
-
-CreateOperationForm.propTypes = {
-  setOperationConcept: PropTypes.func,
-  setOperationAmount: PropTypes.func,
-  setOperationDate: PropTypes.func,
-  setOperationType: PropTypes.func,
-  submitOperation: PropTypes.func,
-};
 
 export default CreateOperationForm;

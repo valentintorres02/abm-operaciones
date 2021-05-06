@@ -3,7 +3,8 @@ import Axios from 'axios';
 import { Route } from 'react-router-dom';
 import Home from './components/Home';
 import Abm from './components/Abm';
-import Nabvar from './components/Nabvar';
+import NabvarComponent from './components/Nabvar/NabvarComponent';
+import CreateOperationScreen from './screens/CreateOperation/CreateOperationScreen';
 
 function App() {
   const [operationsList, setOperationsList] = useState([]);
@@ -22,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <Nabvar />
+      <NabvarComponent />
       <Route
         exact
         path="/"
@@ -38,6 +39,13 @@ function App() {
             operationsList={operationsList}
             setOperationsList={setOperationsList}
           />
+        )}
+      />
+      <Route
+        exact
+        path="/create-operation"
+        render={() => (
+          <CreateOperationScreen />
         )}
       />
     </div>

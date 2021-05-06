@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import HomeList from './HomeList';
 
 function Home({ operationsList }) {
@@ -45,16 +44,19 @@ function Home({ operationsList }) {
             </tr>
           </thead>
           <tbody>
-            {operationsList.slice(Math.max(operationsList.length - 10, 0)).reverse()
-              .map((val) => (
-                <HomeList
-                  id={val.id}
-                  concept={val.concept}
-                  amount={val.amount}
-                  date={val.date}
-                  type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
-                />
-              ))}
+            {operationsList ?
+
+              operationsList.slice(Math.max(operationsList.length - 10, 0)).reverse()
+                .map((val) => (
+                  <HomeList
+                    id={val.id}
+                    concept={val.concept}
+                    amount={val.amount}
+                    date={val.date}
+                    type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
+                  />
+                ))
+              : ''}
           </tbody>
         </table>
       </div>
@@ -63,19 +65,5 @@ function Home({ operationsList }) {
 
   );
 }
-
-Home.defaultProps = {
-  operationsList: [],
-};
-
-Home.propTypes = {
-  operationsList: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    concept: PropTypes.string,
-    amount: PropTypes.number,
-    date: PropTypes.string,
-    type: PropTypes.string,
-  })),
-};
 
 export default Home;

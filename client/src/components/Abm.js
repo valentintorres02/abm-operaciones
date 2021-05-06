@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import '../App.css';
 import Axios from 'axios';
 import List from './List';
-import CreateOperationForm from './CreateOperationForm';
 
 function Abm({ operationsList, setOperationsList }) {
   const [operationConcept, setOperationConcept] = useState('');
@@ -55,15 +54,6 @@ function Abm({ operationsList, setOperationsList }) {
   return (
     <div className="center">
       <p>Crear nueva operación:</p>
-
-      <CreateOperationForm
-        setOperationConcept={setOperationConcept}
-        setOperationAmount={setOperationAmount}
-        setOperationDate={setOperationDate}
-        setOperationType={setOperationType}
-        submitOperation={submitOperation}
-      />
-
       <table className="table table-bordered mb-5">
         <thead>
           <tr className="table-success">
@@ -154,7 +144,7 @@ function Abm({ operationsList, setOperationsList }) {
 
 Abm.defaultProps = {
   operationsList: [],
-  setOperationsList: () => {},
+  setOperationsList: () => { },
 };
 
 Abm.propTypes = {
