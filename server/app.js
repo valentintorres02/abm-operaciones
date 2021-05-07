@@ -6,8 +6,9 @@ const logger = require("morgan");
 const cors = require("cors");
 require("dotenv").config();
 
-// const componentRouter = require(routerFilePath)
+// Custom routers
 const indexRouter = require('./routes/index');
+const operationRouter = require('./routes/operation');
 
 const app = express();
 app.use(cors());
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // app.use(routePath, componentRouter)
 app.use('/', indexRouter);
+app.use('/operation', operationRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
