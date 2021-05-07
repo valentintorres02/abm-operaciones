@@ -1,7 +1,8 @@
+const { sequelize } = require('../models');
 const db = require('../models');
 const Operation = db.Operation;
 
-exports.queryCreateOperation = (concept, amount, date, type) => {
+exports.createOperation = (concept, amount, date, type) => {
   return Operation.create({
     concept,
     amount,
@@ -10,16 +11,25 @@ exports.queryCreateOperation = (concept, amount, date, type) => {
   });
 };
 
-exports.queryGetAllOperations = async () => {
+exports.getAllOperations = async () => {
   const operations = await Operation.findAll();
   return operations;
 };
 
-exports.queryGetAllOperationsByType = async (type) => {
-  let operationsByType = await Operation.findAll({
+exports.getTotalOperationsAmountByType = async (type) => {
+  let totalOperationsAmount = await Operation.findAll({
+    attributes: [[sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']],
     where: {
       type: type,
     },
   });
-  return operationsByType;
+  return totalOperationsAmount;
 };
+
+exports.getLastOperationsByNumber = async (number) => {
+  const lastOperations = await Operation.findAll({
+    limit: number,
+    order: [['id', 'DESC']]
+  })
+  return lastOperations;
+}
