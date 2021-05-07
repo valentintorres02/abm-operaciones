@@ -9,6 +9,7 @@ require("dotenv").config();
 // Custom routers
 const indexRouter = require('./routes/index');
 const operationRouter = require('./routes/operation');
+const balanceRouter = require('./routes/balance');
 
 const app = express();
 app.use(cors());
@@ -26,6 +27,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // app.use(routePath, componentRouter)
 app.use('/', indexRouter);
 app.use('/operation', operationRouter);
+app.use('/balance', balanceRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
