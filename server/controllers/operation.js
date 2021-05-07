@@ -19,3 +19,13 @@ exports.getAllOperations = async (req, res, next) => {
     res.status(constants.CODE_FAILURE_404);
   }
 };
+
+exports.getLastOperationsByNumber = async (req, res, next) => {
+  const numberOfOperations = parseInt(req.params.numberOfOperations);
+  const operations = await operationsQuery.getLastOperationsByNumber(numberOfOperations);
+  if (operations) {
+    res.status(constants.REQ_SUCCESS).send(operations);
+  } else {
+    res.status(constants.CODE_FAILURE_404);
+  }
+};

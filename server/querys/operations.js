@@ -25,3 +25,11 @@ exports.getTotalOperationsAmountByType = async (type) => {
   });
   return totalOperationsAmount;
 };
+
+exports.getLastOperationsByNumber = async (number) => {
+  const lastOperations = await Operation.findAll({
+    limit: number,
+    order: [['id', 'DESC']]
+  })
+  return lastOperations;
+}
