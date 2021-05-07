@@ -1,4 +1,4 @@
-export const URL_MAIN = 'http://localhost:3001/api';
+export const URL_MAIN = 'http://localhost:3000/';
 
 export const MESSAGE_STRING_CONCEPT = "El concepto debe ser un texto";
 
