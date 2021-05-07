@@ -2,7 +2,7 @@ const operationsQuery = require("../querys/operations");
 const constants = require("../constants/constants");
 
 exports.createOperation = (req, res, next) => {
-  operationsQuery.queryCreateOperation(req.body.concept, req.body.amount, req.body.date, req.body.type)
+  operationsQuery.createOperation(req.body.concept, req.body.amount, req.body.date, req.body.type)
     .then(() => {
       res.status(constants.CODE_SUCCESS).send(constants.SUCCESS_OPERATION_CREATE);
     })
@@ -12,7 +12,7 @@ exports.createOperation = (req, res, next) => {
 };
 
 exports.getAllOperations = async (req, res, next) => {
-  const operations = await operationsQuery.queryGetAllOperations();
+  const operations = await operationsQuery.getAllOperations();
   if (operations) {
     res.status(constants.REQ_SUCCESS).send(operations);
   } else {
