@@ -10,7 +10,7 @@ function TableColumns({ administrableOperations }) {
       <th scope="col">Tipo</th>
       {administrableOperations ? (
         <th scope="col">Administrar</th>
-      ) : ''}
+      ) : null}
     </tr>
   );
 }
