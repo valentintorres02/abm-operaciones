@@ -1,4 +1,4 @@
 export const nabvarRoutes = [
   { path: '/', nameToDisplay: 'Home' },
-  { path: '/operations', nameToDisplay: 'Operations' },
+  { path: '/operations', nameToDisplay: 'Operaciones' },
 ]
