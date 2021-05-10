@@ -42,3 +42,10 @@ input:disabled {
 .center {
   text-align: center; 
 }
+
+.pagination-sticky {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  right: 50%
+}
