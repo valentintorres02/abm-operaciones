@@ -19,7 +19,17 @@ exports.getAllOperations = async (req, res, next) => {
   } else {
     res.status(constants.CODE_FAILURE_404);
   };
-}
+};
+
+exports.getOperationById = async (req, res, next) => {
+  const id = req.params.id;
+  const operations = await operationsQuery.getOperationById(id);
+  if (operations) {
+    res.status(constants.REQ_SUCCESS).send(operations);
+  } else {
+    res.status(constants.CODE_FAILURE_404);
+  };
+};
 
 exports.getAllOperationsByPage = async (req, res, next) => {
   const pageAsNumber = parseInt(req.query.page) - 1;
@@ -34,7 +44,7 @@ exports.getAllOperationsByPage = async (req, res, next) => {
   } else {
     res.status(constants.CODE_FAILURE_404);
   };
-}
+};
 
 exports.getLastOperationsByNumber = async (req, res, next) => {
   const numberOfOperations = parseInt(req.params.numberOfOperations);

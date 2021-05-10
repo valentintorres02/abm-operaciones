@@ -16,6 +16,15 @@ exports.getAllOperations = async () => {
   return operations;
 };
 
+exports.getOperationById = async (id) => {
+  const operations = await Operation.findAll({
+    where: {
+      id: id,
+    },
+  });
+  return operations;
+}
+
 exports.getAllOperationsByPage = async (page, size) => {
   const operations = await Operation.findAndCountAll({
     limit: size,
