@@ -16,6 +16,14 @@ exports.getAllOperations = async () => {
   return operations;
 };
 
+exports.getAllOperationsByPage = async (page, size) => {
+  const operations = await Operation.findAndCountAll({
+    limit: size,
+    offset: page * size,
+  });
+  return operations;
+};
+
 exports.getTotalOperationsAmountByType = async (type) => {
   let totalOperationsAmount = await Operation.findAll({
     attributes: [[sequelize.fn('SUM', sequelize.col('amount')), 'totalAmount']],
