@@ -5,7 +5,7 @@ import Table from '../Table/Table';
 function LastTenOperations() {
   const [operationsList, setOperationsList] = useState([]);
   useEffect(() => {
-    httpGetOne('operation', 10).then(res => setOperationsList(res.data))
+    httpGetOne('operation/operations', 10).then(res => setOperationsList(res.data))
   }, []);
 
   return (
