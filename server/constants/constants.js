@@ -10,3 +10,8 @@ exports.REQ_SUCCESS = 200;
 // Operations
 
 exports.SUCCESS_OPERATION_CREATE = "Operación creada correctamente";
+
+//Pagination
+
+exports.DEFAULT_PAGE_VALUE = 0;
+exports.DEFAULT_SIZE_VALUE = 10;
