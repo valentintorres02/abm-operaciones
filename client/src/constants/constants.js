@@ -24,3 +24,23 @@ export const validateForm = (itemToValidate1, itemToValidate2, itemToValidate3) 
   }
   return false;
 };
+
+export const pageUrl = (page, size) => {
+  return `operation/page?page=${page}&size=${size}`;
+}
+
+export const handlePreviousPage = (page, setState) => {
+  if (page !== 1) {
+    setState(page - 1);
+  } else {
+    return;
+  }
+}
+
+export const handleNextPage = (totalPages, page, setState) => {
+  if (totalPages !== page) {
+    setState(page + 1);
+  } else {
+    return;
+  }
+}
