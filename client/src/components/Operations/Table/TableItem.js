@@ -14,7 +14,9 @@ function TableItem({
         <td>{type}</td>
         {administrableOperations ?
           <td>
-            <button type="button" className="btn btn-primary">Editar</button>
+            <a href={`/edit-operation/${id}`}>
+              <button type="button" className="btn btn-primary">Editar</button>
+            </a>
             <button type="button" className="btn btn-danger">Eliminar</button>
           </td>
           : null}
