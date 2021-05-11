@@ -44,3 +44,8 @@ export const handleNextPage = (totalPages, page, setState) => {
     return;
   }
 }
+
+export const inputChangeHandler = (e, key, state, setState) => {
+  state[key] = e.target.value;
+  setState({ ...state });
+};
