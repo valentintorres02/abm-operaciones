@@ -15,3 +15,8 @@ exports.SUCCESS_OPERATION_CREATE = "Operación creada correctamente";
 
 exports.DEFAULT_PAGE_VALUE = 0;
 exports.DEFAULT_SIZE_VALUE = 10;
+
+// Update operation
+
+exports.SUCCESS_OPERATION_UPDATE = "Operación actualizada correctamente";
+exports.OPERATION_NOT_FOUND = "Operación no encontrada";
