@@ -58,18 +58,17 @@ exports.getLastOperationsByNumber = async (req, res, next) => {
 
 exports.updateOperationById = async (req, res, next) => {
   const operationId = req.params.id;
-  const newOperationData = req.body;
-
+  const newValue = req.body;
   try {
     const operationInDatabase = await operationsQuery.getOperationById(
       operationId
     );
 
     if (operationInDatabase) {
-      await operationsQuery.updateOperationById(newOperationData, operationId);
-      res.status(constants.REQ_SUCCESS).send('Operation Update correcto');
+      await operationsQuery.updateOperationById(newValue, operationId);
+      res.status(constants.REQ_SUCCESS).send(constants.SUCCESS_OPERATION_UPDATE);
     } else
-      res.status(constants.CODE_FAILURE_404).send('Operacion no encontrada');
+      res.status(constants.CODE_FAILURE_404).send(constants.OPERATION_NOT_FOUND);
   } catch (err) {
     res.status(constants.CODE_FAILURE_404).send(err.message);
   }

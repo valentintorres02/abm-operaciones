@@ -14,6 +14,6 @@ router.get('/operations/:numberOfOperations', getLastOperationsByNumber);
 // Get operations with pagination
 router.get('/page', getAllOperationsByPage);
 // Update operation by Id.
-router.put('/:id', updateOperationById);
+router.patch('/:id', updateOperationById);
 
 module.exports = router;
