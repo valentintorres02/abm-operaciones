@@ -73,3 +73,20 @@ exports.updateOperationById = async (req, res, next) => {
     res.status(constants.CODE_FAILURE_404).send(err.message);
   }
 };
+
+exports.deleteOperationById = async (req, res) => {
+  try {
+    const operationId = req.params.id;
+    const operationInDatabase = await operationsQuery.getOperationById(
+      operationId
+    );
+
+    if (operationInDatabase) {
+      await operationsQuery.deleteOperationById(operationId);
+      res.status(constants.REQ_SUCCESS).send(constants.SUCCESS_OPERATION_DELETE);
+    } else
+      res.status(constants.CODE_FAILURE_404).send(constants.OPERATION_NOT_FOUND);
+  } catch (err) {
+    res.status(constants.CODE_FAILURE_404).send(err.message);
+  }
+};

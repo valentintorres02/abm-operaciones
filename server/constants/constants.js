@@ -20,3 +20,7 @@ exports.DEFAULT_SIZE_VALUE = 10;
 
 exports.SUCCESS_OPERATION_UPDATE = "Operación actualizada correctamente";
 exports.OPERATION_NOT_FOUND = "Operación no encontrada";
+
+// Delete operation
+
+exports.SUCCESS_OPERATION_DELETE = 'Operación eliminada correctamente';

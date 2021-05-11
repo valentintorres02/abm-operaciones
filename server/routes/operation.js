@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { createOperation, getAllOperations, getOperationById, getLastOperationsByNumber,
-  getAllOperationsByPage, updateOperationById } = require('../controllers/operation');
+  getAllOperationsByPage, updateOperationById, deleteOperationById } = require('../controllers/operation');
 
 // Get all operations
 router.get('/', getAllOperations);
@@ -15,5 +15,7 @@ router.get('/operations/:numberOfOperations', getLastOperationsByNumber);
 router.get('/page', getAllOperationsByPage);
 // Update operation by Id.
 router.patch('/:id', updateOperationById);
+// Delete operation by Id.
+router.delete('/:id', deleteOperationById);
 
 module.exports = router;

@@ -61,3 +61,11 @@ exports.updateOperationById = async (operationData, operationId) => {
     return err;
   }
 };
+
+exports.deleteOperationById = async (operationId) => {
+  try {
+    await Operation.destroy({ where: { id: operationId } });
+  } catch (err) {
+    return err;
+  }
+};
