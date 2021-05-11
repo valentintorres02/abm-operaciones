@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { httpGetOne } from '../../../services/httpServices';
-import Table from '../Table/Table';
+import LastTenOperationsContent from './LastTenOperationsContent';
 
 function LastTenOperations() {
   const [operationsList, setOperationsList] = useState([]);
@@ -9,10 +9,7 @@ function LastTenOperations() {
   }, []);
 
   return (
-    <div>
-      <h5 style={{ margin: '20px' }}>Últimas 10 operaciones:</h5>
-      <Table operations={operationsList} administrableOperations={false} />
-    </div>
+    <LastTenOperationsContent operationsList={operationsList} />
   );
 }
 

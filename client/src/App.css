@@ -57,3 +57,7 @@ input:disabled {
 .positive-balance {
   color: green;
 }
+
+.last-ten-title {
+  margin: 20px;
+}
