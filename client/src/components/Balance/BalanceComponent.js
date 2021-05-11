@@ -12,6 +12,6 @@ function BalanceComponent() {
   return (
     <BalanceContent currentBalance={currentBalance} />
   );
-}
+};
 
 export default BalanceComponent;
