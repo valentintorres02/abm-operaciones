@@ -51,3 +51,11 @@ export const inputChangeHandler = (e, key, state, setState) => {
   state[key] = e.target.value;
   setState({ ...state });
 };
+
+export const deleteOperation = (e, deleteServices, url, state, setState) => {
+  const itemId = parseInt(e.target.id);
+  if (confirm(`Eliminar la operación ID ${itemId}?`)) {
+    deleteServices(url, itemId);
+    setState(state.filter(({ id }) => id !== itemId));
+  }
+}
