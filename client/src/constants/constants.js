@@ -18,7 +18,15 @@ export const MESSAGE_STRING_DATE = "Ingrese una fecha válida";
 
 export const MESSAGE_REQUIRED_TYPE = "Debe ingresar un tipo de operación";
 
-export const MESSAGE_STRING_TYPE = "Ingrese un tipo de operación válido"
+export const MESSAGE_STRING_TYPE = "Ingrese un tipo de operación válido";
+
+export const EDIT_OPERATION_TITLE = "Editar operación";
+
+export const UPDATE_FORM_BUTTON_TITLE = "Editar";
+
+export const CREATE_OPERATION_TITLE = "Crear operación";
+
+export const CREATE_FORM_BUTTON_TITLE = "Crear";
 
 export const validateForm = (itemToValidate1, itemToValidate2, itemToValidate3) => {
   if (itemToValidate1.length && itemToValidate2.length && itemToValidate3.length > 0) {
@@ -36,16 +44,16 @@ export const handlePreviousPage = (page, setState) => {
     setState(page - 1);
   } else {
     return;
-  }
-}
+  };
+};
 
 export const handleNextPage = (totalPages, page, setState) => {
   if (totalPages !== page) {
     setState(page + 1);
   } else {
     return;
-  }
-}
+  };
+};
 
 export const inputChangeHandler = (e, key, state, setState) => {
   state[key] = e.target.value;
@@ -57,5 +65,15 @@ export const deleteOperation = (e, deleteServices, url, state, setState) => {
   if (confirm(`Eliminar la operación ID ${itemId}?`)) {
     deleteServices(url, itemId);
     setState(state.filter(({ id }) => id !== itemId));
-  }
+  };
+};
+
+export const updateOperation = (e, updateServices, url, id, data) => {
+  e.preventDefault();
+  updateServices(url, id, data);
+}
+
+export const createOperation = (e, createServices, url, data) => {
+  e.preventDefault();
+  createServices(url, data);
 }
