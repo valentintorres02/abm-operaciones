@@ -20,7 +20,7 @@ function OperationsComponent() {
   return (
     <div>
       <h5 style={{ margin: '20px' }}>Operaciones:</h5>
-      <Table operations={operationsList} administrableOperations={true} />
+      <Table operations={operationsList} administrableOperations={true} state={operationsList} setState={setOperationsList} />
       <Pagination totalPages={totalPages} setPage={setPage} page={page} />
     </div>
   );
