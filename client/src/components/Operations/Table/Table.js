@@ -2,7 +2,7 @@ import React from 'react';
 import TableColumns from './TableColumns';
 import TableItem from './TableItem';
 
-function Table({ operations, administrableOperations }) {
+function Table({ operations, administrableOperations, state, setState }) {
   return (
     <table className="table table-bordered mb-5">
       <thead>
@@ -18,6 +18,8 @@ function Table({ operations, administrableOperations }) {
             date={val.date}
             type={val.type === 'in' ? 'Ingreso' : 'Egreso'}
             administrableOperations={administrableOperations}
+            state={state}
+            setState={setState}
           />
         ))}
       </tbody>
