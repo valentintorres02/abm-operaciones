@@ -49,3 +49,11 @@ input:disabled {
   left: 50%;
   right: 50%
 }
+
+.negative-balance {
+  color: red;
+}
+
+.positive-balance {
+  color: green;
+}
