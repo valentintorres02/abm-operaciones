@@ -5,7 +5,7 @@ function OperationForm({ title, setEditedOperation, editedOperation, operationTo
   return (
     <div className="App">
       <h5 style={{ margin: '20px' }}>{title}</h5>
-      <form className="w-25 mx-auto">
+      <form className="w-25 mx-auto" onSubmit={() => alert('send')}>
         <FormItems setEditedOperation={setEditedOperation} editedOperation={editedOperation}
           operationToEdit={operationToEdit}
         />

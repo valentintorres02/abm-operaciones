@@ -18,7 +18,9 @@ function FormItems({ setEditedOperation, editedOperation, operationToEdit }) {
           value={operationToEdit[item.name]}
         />
       ))}
-      <OperationTypeItem key="type" state={editedOperation} setState={setEditedOperation} />
+      <OperationTypeItem key="type" state={editedOperation} setState={setEditedOperation}
+        value={editedOperation.type}
+      />
       <SubmitButton textToDisplay="Editar" />
     </>
   );
