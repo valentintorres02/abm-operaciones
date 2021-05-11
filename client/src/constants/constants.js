@@ -77,9 +77,15 @@ export const deleteOperation = (e, deleteServices, url, state, setState) => {
 export const updateOperation = (e, updateServices, url, id, data) => {
   e.preventDefault();
   updateServices(url, id, data);
-}
+};
 
 export const createOperation = (e, createServices, url, data) => {
   e.preventDefault();
   createServices(url, data);
-}
+};
+
+export const removeSequelizeKeys = (obj) => {
+  delete obj.createdAt;
+  delete obj.updatedAt;
+  return obj;
+};

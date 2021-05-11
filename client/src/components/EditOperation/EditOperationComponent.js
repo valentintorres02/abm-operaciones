@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { OPERATION_URL_MAIN } from '../../constants/constants';
+import { OPERATION_URL_MAIN, removeSequelizeKeys } from '../../constants/constants';
 import { httpGetOne } from '../../services/httpServices';
 import EditOperationContent from './EditOperationContent';
 
@@ -11,9 +11,7 @@ function EditOperationComponent() {
 
   useEffect(() => {
     httpGetOne(`${OPERATION_URL_MAIN}/select`, id).then((res) => {
-      delete res.data[0].createdAt;
-      delete res.data[0].updatedAt;
-      setOperationToEdit(res.data[0]);
+      setOperationToEdit(removeSequelizeKeys(res.data[0]));
     });
   }, []);
 
