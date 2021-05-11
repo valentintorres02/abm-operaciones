@@ -55,3 +55,22 @@ exports.getLastOperationsByNumber = async (req, res, next) => {
     res.status(constants.CODE_FAILURE_404);
   };
 };
+
+exports.updateOperationById = async (req, res, next) => {
+  const operationId = req.params.id;
+  const newOperationData = req.body;
+
+  try {
+    const operationInDatabase = await operationsQuery.getOperationById(
+      operationId
+    );
+
+    if (operationInDatabase) {
+      await operationsQuery.updateOperationById(newOperationData, operationId);
+      res.status(constants.REQ_SUCCESS).send('Operation Update correcto');
+    } else
+      res.status(constants.CODE_FAILURE_404).send('Operacion no encontrada');
+  } catch (err) {
+    res.status(constants.CODE_FAILURE_404).send(err.message);
+  }
+};

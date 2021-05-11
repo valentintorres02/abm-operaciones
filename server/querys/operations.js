@@ -50,3 +50,14 @@ exports.getLastOperationsByNumber = async (number) => {
   })
   return lastOperations;
 }
+
+exports.updateOperationById = async (operationData, operationId) => {
+  try {
+    const updatedOperation = await Operation.update(operationData, {
+      where: { id: operationId },
+    });
+    return updatedOperation;
+  } catch (err) {
+    return err;
+  }
+};
