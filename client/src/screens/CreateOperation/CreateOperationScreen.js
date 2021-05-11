@@ -1,8 +1,11 @@
 import React from 'react';
+import CreateOperationComponent from '../../components/CreateOperation/CreateOperationComponent';
 
 function CreateOperationScreen() {
   return (
-    <div>A</div>
+    <div>
+      <CreateOperationComponent />
+    </div>
   );
 }
 
