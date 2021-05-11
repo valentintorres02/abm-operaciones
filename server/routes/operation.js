@@ -6,7 +6,7 @@ const { createOperation, getAllOperations, getOperationById, getLastOperationsBy
 // Get all operations
 router.get('/', getAllOperations);
 // Get operation by id
-router.get('/:id', getOperationById);
+router.get('/select/:id', getOperationById);
 // Create operation
 router.post('/', createOperation);
 // Get last operations
