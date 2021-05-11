@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { URL_MAIN } from '../../constants/constants';
-import { httpGetOne } from '../../services/httpServices';
+import { EDIT_OPERATION_TITLE, OPERATION_URL_MAIN, updateOperation, UPDATE_FORM_BUTTON_TITLE, URL_MAIN } from '../../constants/constants';
+import { httpGetOne, httpPatch } from '../../services/httpServices';
 import OperationForm from '../OperationForm/OperationForm';
 
 function EditOperationComponent() {
@@ -23,8 +23,13 @@ function EditOperationComponent() {
 
   return (
     <div>
-      <OperationForm title="Editar operación" setEditedOperation={setEditedOperation}
-        operationToEdit={operationToEdit} editedOperation={editedOperation}
+      <OperationForm
+        title={EDIT_OPERATION_TITLE}
+        handleSubmit={(e) => updateOperation(e, httpPatch, OPERATION_URL_MAIN, editedOperation.id, editedOperation)}
+        setManagedOperation={setEditedOperation}
+        managedOperation={editedOperation}
+        operationToManage={operationToEdit}
+        formButtonTitle={UPDATE_FORM_BUTTON_TITLE}
       />
     </div>
   );

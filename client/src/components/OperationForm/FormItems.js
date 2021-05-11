@@ -4,7 +4,7 @@ import FormItem from './FormItem/FormItem';
 import OperationTypeItem from './FormItem/OperationTypeItem';
 import SubmitButton from './FormItem/SubmitButton';
 
-function FormItems({ setEditedOperation, editedOperation, operationToEdit }) {
+function FormItems({ setManagedOperation, managedOperation, operationToManage, formButtonTitle }) {
   return (
     <>
       {items.map((item) => (
@@ -13,15 +13,15 @@ function FormItems({ setEditedOperation, editedOperation, operationToEdit }) {
           inputName={item.name}
           textToDisplay={item.textToDisplay}
           inputType={item.inputType}
-          setState={setEditedOperation}
-          state={editedOperation}
-          value={operationToEdit[item.name]}
+          setState={setManagedOperation}
+          state={managedOperation}
+          value={operationToManage[item.name]}
         />
       ))}
-      <OperationTypeItem key="type" state={editedOperation} setState={setEditedOperation}
-        value={editedOperation.type}
+      <OperationTypeItem key="type" state={managedOperation} setState={setManagedOperation}
+        value={managedOperation.type}
       />
-      <SubmitButton textToDisplay="Editar" />
+      <SubmitButton textToDisplay={formButtonTitle} />
     </>
   );
 }
