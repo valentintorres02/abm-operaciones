@@ -16,6 +16,15 @@ exports.getAllOperations = async () => {
   return operations;
 };
 
+exports.getOperationById = async (id) => {
+  const operations = await Operation.findAll({
+    where: {
+      id: id,
+    },
+  });
+  return operations;
+}
+
 exports.getAllOperationsByPage = async (page, size) => {
   const operations = await Operation.findAndCountAll({
     limit: size,
@@ -41,3 +50,14 @@ exports.getLastOperationsByNumber = async (number) => {
   })
   return lastOperations;
 }
+
+exports.updateOperationById = async (operationData, operationId) => {
+  try {
+    const updatedOperation = await Operation.update(operationData, {
+      where: { id: operationId },
+    });
+    return updatedOperation;
+  } catch (err) {
+    return err;
+  }
+};

@@ -1,5 +1,7 @@
 export const URL_MAIN = 'http://localhost:3000/';
 
+export const OPERATION_URL_MAIN = `${URL_MAIN}operation`;
+
 export const MESSAGE_STRING_CONCEPT = "El concepto debe ser un texto";
 
 export const MESSAGE_REQUIRED_CONCEPT = "Debe ingresar un concepto";
@@ -44,3 +46,8 @@ export const handleNextPage = (totalPages, page, setState) => {
     return;
   }
 }
+
+export const inputChangeHandler = (e, key, state, setState) => {
+  state[key] = e.target.value;
+  setState({ ...state });
+};

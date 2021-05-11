@@ -1,7 +1,7 @@
 import React from 'react';
 import NextArrow from './PageArrows/NextArrow';
 import PreviousArrow from './PageArrows/PreviousArrow';
-import PageNumbers from './PageNumbers';
+import PageNumbers from './PageNumbers/PageNumbers';
 
 function Pagination({ totalPages, setPage, page }) {
   return (
