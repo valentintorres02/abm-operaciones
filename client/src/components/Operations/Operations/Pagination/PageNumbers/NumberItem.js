@@ -4,7 +4,7 @@ function NumberItem({ pageNumber, setCurrentPage, currentPage }) {
   return (
     <li className={`page-item ${parseInt(currentPage) === pageNumber ? 'active' : ''}`}>
       <button className="page-link" onClick={(e) => {
-        setCurrentPage(e.target.innerHTML);
+        setCurrentPage(parseInt(e.target.innerHTML));
       }}
       >
         {pageNumber}
