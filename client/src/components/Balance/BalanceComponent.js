@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { httpGetAll } from '../../services/httpServices';
+import BalanceContent from './BalanceContent';
 
 function BalanceComponent() {
   const [currentBalance, setCurrentBalance] = useState(0);
@@ -9,16 +10,8 @@ function BalanceComponent() {
   }, []);
 
   return (
-    <div>
-      <h5>Balance:</h5>
-      <h2 style={{
-        ...currentBalance >= 0 ? { color: 'green' } : { color: 'red' },
-      }}
-      >
-        {currentBalance}
-      </h2>
-    </div>
+    <BalanceContent currentBalance={currentBalance} />
   );
-}
+};
 
 export default BalanceComponent;

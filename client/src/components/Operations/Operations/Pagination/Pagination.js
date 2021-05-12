@@ -3,13 +3,13 @@ import NextArrow from './PageArrows/NextArrow';
 import PreviousArrow from './PageArrows/PreviousArrow';
 import PageNumbers from './PageNumbers/PageNumbers';
 
-function Pagination({ totalPages, setPage, page }) {
+function Pagination({ totalPages, setCurrentPage, currentPage }) {
   return (
-    <nav className="pagination-sticky">
-      <ul className="pagination">
-        <PreviousArrow setPage={setPage} page={page} />
-        <PageNumbers totalPages={totalPages} setPage={setPage} />
-        <NextArrow totalPages={totalPages} page={page} setPage={setPage} />
+    <nav>
+      <ul className="pagination justify-content-center fixed-bottom">
+        <PreviousArrow setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <PageNumbers totalPages={totalPages} setCurrentPage={setCurrentPage} currentPage={currentPage} />
+        <NextArrow totalPages={totalPages} currentPage={currentPage} setCurrentPage={setCurrentPage} />
       </ul>
     </nav>
   );

@@ -1,28 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { pageUrl } from '../../../constants/constants';
+import { DEFAULT_PAGE_SIZE, pageUrl } from '../../../constants/constants';
 import { httpGetAll } from '../../../services/httpServices';
-import Table from '../Table/Table';
-import Pagination from './Pagination/Pagination';
+import OperationsContent from './OperationsContent';
 
 function OperationsComponent() {
   const [operationsList, setOperationsList] = useState([]);
   const [totalPages, setTotalPages] = useState([]);
-  const [page, setPage] = useState(1);
-  const [size, setSize] = useState(5);
+  const [currentPage, setCurrentPage] = useState(1);
+  const size = DEFAULT_PAGE_SIZE;
 
   useEffect(() => {
-    httpGetAll(pageUrl(page, size)).then(res => {
+    httpGetAll(pageUrl(currentPage, size)).then(res => {
       setTotalPages(res.data.totalPages);
       setOperationsList(res.data.content)
     })
-  }, [page, size]);
+  }, [currentPage, size]);
 
   return (
-    <div>
-      <h5 style={{ margin: '20px' }}>Operaciones:</h5>
-      <Table operations={operationsList} administrableOperations={true} state={operationsList} setState={setOperationsList} />
-      <Pagination totalPages={totalPages} setPage={setPage} page={page} />
-    </div>
+    <OperationsContent
+      operationsList={operationsList}
+      setOperationsList={setOperationsList}
+      totalPages={totalPages}
+      setCurrentPage={setCurrentPage}
+      currentPage={currentPage}
+    />
   );
 }
 

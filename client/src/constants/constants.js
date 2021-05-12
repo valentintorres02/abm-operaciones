@@ -28,6 +28,12 @@ export const CREATE_OPERATION_TITLE = "Crear operación";
 
 export const CREATE_FORM_BUTTON_TITLE = "Crear";
 
+export const DEFAULT_PAGE_SIZE = 5;
+
+export const LAST_TEN_OPERATIONS_TITLE = "Últimas 10 operaciones";
+
+export const OPERATIONS_TITLE = "Operaciones";
+
 export const validateForm = (itemToValidate1, itemToValidate2, itemToValidate3) => {
   if (itemToValidate1.length && itemToValidate2.length && itemToValidate3.length > 0) {
     return true;
@@ -71,9 +77,15 @@ export const deleteOperation = (e, deleteServices, url, state, setState) => {
 export const updateOperation = (e, updateServices, url, id, data) => {
   e.preventDefault();
   updateServices(url, id, data);
-}
+};
 
 export const createOperation = (e, createServices, url, data) => {
   e.preventDefault();
   createServices(url, data);
-}
+};
+
+export const removeSequelizeKeys = (obj) => {
+  delete obj.createdAt;
+  delete obj.updatedAt;
+  return obj;
+};

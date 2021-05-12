@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { EDIT_OPERATION_TITLE, OPERATION_URL_MAIN, updateOperation, UPDATE_FORM_BUTTON_TITLE, URL_MAIN } from '../../constants/constants';
-import { httpGetOne, httpPatch } from '../../services/httpServices';
-import OperationForm from '../OperationForm/OperationForm';
+import { OPERATION_URL_MAIN, removeSequelizeKeys } from '../../constants/constants';
+import { httpGetOne } from '../../services/httpServices';
+import EditOperationContent from './EditOperationContent';
 
 function EditOperationComponent() {
   const { id } = useParams();
@@ -10,10 +10,8 @@ function EditOperationComponent() {
   const [editedOperation, setEditedOperation] = useState({});
 
   useEffect(() => {
-    httpGetOne(`${URL_MAIN}operation/select`, id).then((res) => {
-      delete res.data[0].createdAt;
-      delete res.data[0].updatedAt;
-      setOperationToEdit(res.data[0]);
+    httpGetOne(`${OPERATION_URL_MAIN}/select`, id).then((res) => {
+      setOperationToEdit(removeSequelizeKeys(res.data[0]));
     });
   }, []);
 
@@ -22,16 +20,11 @@ function EditOperationComponent() {
   }, [operationToEdit])
 
   return (
-    <div>
-      <OperationForm
-        title={EDIT_OPERATION_TITLE}
-        handleSubmit={(e) => updateOperation(e, httpPatch, OPERATION_URL_MAIN, editedOperation.id, editedOperation)}
-        setManagedOperation={setEditedOperation}
-        managedOperation={editedOperation}
-        operationToManage={operationToEdit}
-        formButtonTitle={UPDATE_FORM_BUTTON_TITLE}
-      />
-    </div>
+    <EditOperationContent
+      editedOperation={editedOperation}
+      setEditedOperation={setEditedOperation}
+      operationToEdit={operationToEdit}
+    />
   );
 };
 
