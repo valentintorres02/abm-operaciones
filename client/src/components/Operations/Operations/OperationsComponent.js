@@ -6,23 +6,23 @@ import OperationsContent from './OperationsContent';
 function OperationsComponent() {
   const [operationsList, setOperationsList] = useState([]);
   const [totalPages, setTotalPages] = useState([]);
-  const [page, setPage] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const size = DEFAULT_PAGE_SIZE;
 
   useEffect(() => {
-    httpGetAll(pageUrl(page, size)).then(res => {
+    httpGetAll(pageUrl(currentPage, size)).then(res => {
       setTotalPages(res.data.totalPages);
       setOperationsList(res.data.content)
     })
-  }, [page, size]);
+  }, [currentPage, size]);
 
   return (
     <OperationsContent
       operationsList={operationsList}
       setOperationsList={setOperationsList}
       totalPages={totalPages}
-      setPage={setPage}
-      page={page}
+      setCurrentPage={setCurrentPage}
+      currentPage={currentPage}
     />
   );
 }
