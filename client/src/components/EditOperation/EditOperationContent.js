@@ -1,6 +1,6 @@
 import React from 'react';
-import { EDIT_OPERATION_TITLE, OPERATION_URL_MAIN, updateOperation, UPDATE_FORM_BUTTON_TITLE } from '../../constants/constants';
-import { httpPatch } from '../../services/httpServices';
+import { EDIT_OPERATION_TITLE, UPDATE_FORM_BUTTON_TITLE } from '../../constants/constants';
+import { updateSelectedOperation } from '../../constants/operationsFunctions';
 import OperationForm from '../OperationForm/OperationForm';
 
 function EditOperationContent({ editedOperation, setEditedOperation, operationToEdit }) {
@@ -8,7 +8,9 @@ function EditOperationContent({ editedOperation, setEditedOperation, operationTo
     <div>
       <OperationForm
         title={EDIT_OPERATION_TITLE}
-        handleSubmit={(e) => updateOperation(e, httpPatch, OPERATION_URL_MAIN, editedOperation.id, editedOperation)}
+        handleSubmit={(e) => {
+          updateSelectedOperation(e, editedOperation)
+        }}
         setManagedOperation={setEditedOperation}
         managedOperation={editedOperation}
         operationToManage={operationToEdit}
