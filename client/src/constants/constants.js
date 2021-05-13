@@ -26,6 +26,13 @@ export const MESSAGE_NOT_A_NUMBER_AMOUNT = "El monto debe ser un número."
 export const MESSAGE_VALID_DATE = "Ingrese una fecha válida"
 export const MESSAGE_REQUIRED_TYPE = "Debe ingresar un tipo de operación."
 export const MESSAGE_VALID_TYPE = "Ingresa un tipo de operación válido."
+export const FORM_VALIDATED = "validated";
+
+// Alerts
+
+export const SUCCESS_ALERT = "Éxito";
+export const SUCCESS_EDITED_OPERATION = "Operación modificada correctamente";
+export const SUCCESS_CREATED_OPERATION = "Operación creada correctamente";
 
 //Pagination
 
@@ -62,13 +69,11 @@ export const deleteOperation = (e, deleteServices, url, state, setState) => {
   };
 };
 
-export const updateOperation = (e, updateServices, url, id, data) => {
-  e.preventDefault();
+export const updateOperation = (updateServices, url, id, data) => {
   updateServices(url, id, data);
 };
 
-export const createOperation = (e, createServices, url, data) => {
-  e.preventDefault();
+export const createOperation = (createServices, url, data) => {
   createServices(url, data);
 };
 
