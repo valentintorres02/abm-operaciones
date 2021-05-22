@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { DEFAULT_PAGE_SIZE, pageUrl } from '../../../constants/constants';
 import { httpGetAll } from '../../../services/httpServices';
-import { getAllOperations, saveAllPageOperations, saveOperation } from '../../../storage/operations';
+import { getAllOperations, saveAllPageOperations } from '../../../storage/operations';
 import OperationsContent from './OperationsContent';
 
 function OperationsComponent() {
@@ -19,7 +19,6 @@ function OperationsComponent() {
 
   useEffect(() => {
     if (operationsList.length >= 1) {
-      // saveOperation(operationsList[0])
       saveAllPageOperations(operationsList, currentPage);
       getAllOperations();
     }

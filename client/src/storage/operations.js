@@ -1,7 +1,3 @@
-export const saveOperation = (operation) => {
-  localStorage.setItem(`operation_${operation.id}`, JSON.stringify(operation));
-};
-
 export const saveAllPageOperations = (operations, page) => {
   const arrayOfPages = [];
   const arrayOfOperations = [];
