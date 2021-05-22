@@ -6,10 +6,10 @@ export const saveAllPageOperations = (operations, page) => {
     arrayOfOperations.push(operation)
   });
   arrayOfPages.push(pageObject);
-  localStorage.setItem(`page-${page}`, JSON.stringify(arrayOfPages));
+  localStorage.setItem(`page_${page}`, JSON.stringify(arrayOfOperations));
 };
 
-export const getAllOperations = () => {
-  const items = { ...localStorage };
-  return items;
+export const getOperationsByPage = (pageNumber) => {
+  const operationsByPage = JSON.parse(localStorage.getItem(`page_${pageNumber}`));
+  return operationsByPage;
 };
