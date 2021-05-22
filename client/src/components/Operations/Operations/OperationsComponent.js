@@ -11,10 +11,10 @@ function OperationsComponent() {
   const size = DEFAULT_PAGE_SIZE;
 
   useEffect(() => {
-    httpGetAll(pageUrl(currentPage, size)).then(res => {
+    httpGetAll(pageUrl(currentPage, size)).then(res => { // Initial fetch to set total pages to print in pagination.
       setTotalPages(res.data.totalPages);
     });
-    localStorage.clear();
+    localStorage.clear(); // Clear localStorage to delete old pages stored.
   }, []);
 
   useEffect(() => {
