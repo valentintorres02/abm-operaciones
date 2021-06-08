@@ -1,6 +1,6 @@
 import React from 'react';
-import { CREATE_OPERATION_TITLE, OPERATION_URL_MAIN, CREATE_FORM_BUTTON_TITLE, createOperation } from '../../constants/constants';
-import { httpPost } from '../../services/httpServices';
+import { CREATE_OPERATION_TITLE, CREATE_FORM_BUTTON_TITLE } from '../../constants/constants';
+import { createSelectedOperation } from '../../constants/operationsFunctions';
 import OperationForm from '../OperationForm/OperationForm';
 
 function CreateOperationContent({ setNewOperation, newOperation }) {
@@ -8,7 +8,9 @@ function CreateOperationContent({ setNewOperation, newOperation }) {
     <div>
       <OperationForm
         title={CREATE_OPERATION_TITLE}
-        handleSubmit={(e) => createOperation(e, httpPost, OPERATION_URL_MAIN, newOperation)}
+        handleSubmit={(e) => {
+          createSelectedOperation(e, newOperation)
+        }}
         setManagedOperation={setNewOperation}
         managedOperation={newOperation}
         operationToManage={newOperation}

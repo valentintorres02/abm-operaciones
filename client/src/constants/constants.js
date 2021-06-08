@@ -1,49 +1,42 @@
-export const URL_MAIN = 'http://localhost:3000/';
+// Urls
 
+export const URL_MAIN = "http://localhost:3000/";
 export const OPERATION_URL_MAIN = `${URL_MAIN}operation`;
-
-export const MESSAGE_STRING_CONCEPT = "El concepto debe ser un texto";
-
-export const MESSAGE_REQUIRED_CONCEPT = "Debe ingresar un concepto";
-
-export const MESSAGE_NOT_A_NUMBER = "El monto debe ser un número";
-
-export const MESSAGE_NEGATIVE_NUMBER = "El monto no puede ser negativo";
-
-export const MESSAGE_REQUIRED_AMOUNT = "Debe ingresar un monto";
-
-export const MESSAGE_REQUIRED_DATE = "Debe ingresar una fecha";
-
-export const MESSAGE_STRING_DATE = "Ingrese una fecha válida";
-
-export const MESSAGE_REQUIRED_TYPE = "Debe ingresar un tipo de operación";
-
-export const MESSAGE_STRING_TYPE = "Ingrese un tipo de operación válido";
-
-export const EDIT_OPERATION_TITLE = "Editar operación";
-
-export const UPDATE_FORM_BUTTON_TITLE = "Editar";
-
-export const CREATE_OPERATION_TITLE = "Crear operación";
-
-export const CREATE_FORM_BUTTON_TITLE = "Crear";
-
-export const DEFAULT_PAGE_SIZE = 5;
-
-export const LAST_TEN_OPERATIONS_TITLE = "Últimas 10 operaciones";
-
-export const OPERATIONS_TITLE = "Operaciones";
-
-export const validateForm = (itemToValidate1, itemToValidate2, itemToValidate3) => {
-  if (itemToValidate1.length && itemToValidate2.length && itemToValidate3.length > 0) {
-    return true;
-  }
-  return false;
-};
-
 export const pageUrl = (page, size) => {
   return `operation/page?page=${page}&size=${size}`;
 }
+
+// Buttons and titles
+
+export const EDIT_OPERATION_TITLE = "Editar operación";
+export const OPERATIONS_TITLE = "Operaciones";
+export const UPDATE_FORM_BUTTON_TITLE = "Editar";
+export const CREATE_OPERATION_TITLE = "Crear operación";
+export const CREATE_FORM_BUTTON_TITLE = "Crear";
+export const LAST_TEN_OPERATIONS_TITLE = "Últimas 10 operaciones";
+
+// Form validations
+
+export const MESSAGE_REQUIRED_CONCEPT = "Debe ingresar un concepto."
+export const MESSAGE_MAX_CONCEPT_CHARACTERS = "El concepto debe ser menor a 50 caracteres."
+export const MESSAGE_REQUIRED_AMOUNT = "Debe ingresar un monto."
+export const MESSAGE_MAX_AMOUNT_CHARACTERS = "El monto debe ser menor a 20 caracteres."
+export const MESSAGE_NEGATIVE_AMOUNT = "El monto no puede ser negativo."
+export const MESSAGE_NOT_A_NUMBER_AMOUNT = "El monto debe ser un número."
+export const MESSAGE_VALID_DATE = "Ingrese una fecha válida"
+export const MESSAGE_REQUIRED_TYPE = "Debe ingresar un tipo de operación."
+export const MESSAGE_VALID_TYPE = "Ingresa un tipo de operación válido."
+export const FORM_VALIDATED = "validated";
+
+// Alerts
+
+export const SUCCESS_ALERT = "Éxito";
+export const SUCCESS_EDITED_OPERATION = "Operación modificada correctamente";
+export const SUCCESS_CREATED_OPERATION = "Operación creada correctamente";
+
+//Pagination
+
+export const DEFAULT_PAGE_SIZE = 5;
 
 export const handlePreviousPage = (page, setState) => {
   if (page !== 1) {
@@ -61,6 +54,8 @@ export const handleNextPage = (totalPages, page, setState) => {
   };
 };
 
+// Operations
+
 export const inputChangeHandler = (e, key, state, setState) => {
   state[key] = e.target.value;
   setState({ ...state });
@@ -74,15 +69,15 @@ export const deleteOperation = (e, deleteServices, url, state, setState) => {
   };
 };
 
-export const updateOperation = (e, updateServices, url, id, data) => {
-  e.preventDefault();
+export const updateOperation = (updateServices, url, id, data) => {
   updateServices(url, id, data);
 };
 
-export const createOperation = (e, createServices, url, data) => {
-  e.preventDefault();
+export const createOperation = (createServices, url, data) => {
   createServices(url, data);
 };
+
+// Object handlers
 
 export const removeSequelizeKeys = (obj) => {
   delete obj.createdAt;
